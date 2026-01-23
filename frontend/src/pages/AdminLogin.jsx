@@ -113,13 +113,6 @@ const AdminLogin = () => {
               {loading ? 'Logging in...' : 'Login'}
             </button>
           </form>
-
-          {/* Default Credentials Info */}
-          <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-            <p className="text-xs text-gray-600 text-center">
-              Default: <span className="font-semibold">admin / admin123</span>
-            </p>
-          </div>
         </div>
       </div>
     </div>

@@ -159,13 +159,6 @@ const EventBanner = () => {
                     </div>
                   </div>
                 </div>
-
-                {/* Call to Action */}
-                <div className="pt-4">
-                  <button className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-blue-900 font-bold px-6 md:px-8 py-3 md:py-3.5 rounded-full text-base md:text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-                    Learn More
-                  </button>
-                </div>
               </div>
             </div>
           </div>
