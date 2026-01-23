@@ -96,11 +96,11 @@ const EventBanner = () => {
           <div className="grid md:grid-cols-2 h-full">
             
             {/* Left Side - Event Image */}
-            <div className="relative h-64 md:h-auto overflow-hidden">
+            <div className="relative h-64 md:h-auto overflow-hidden bg-gray-100">
               <img 
                 src={eventImage}
                 alt={currentEvent.title}
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-contain"
                 onError={(e) => {
                   e.target.src = 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1920&q=80';
                 }}
