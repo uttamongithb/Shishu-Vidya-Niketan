@@ -14,7 +14,8 @@ try {
 const authMiddleware = require('../middleware/authMiddleware');
 
 // Firestore REST API fallback
-const FIREBASE_PROJECT_ID = 'redesign-bbbbf';
+const FIREBASE_PROJECT_ID = process.env.FIREBASE_PROJECT_ID;
+const FIREBASE_API_KEY = process.env.FIREBASE_API_KEY;
 const FIRESTORE_API = `https://firestore.googleapis.com/v1/projects/${FIREBASE_PROJECT_ID}/databases/(default)/documents`;
 
 // @route   POST /api/enquiries
@@ -55,7 +56,7 @@ router.post('/', async (req, res) => {
       { fields: firestoreDoc },
       {
         headers: { 'Content-Type': 'application/json' },
-        params: { key: 'AIzaSyBp4EGFLyzZPAzAM45DopE-1TCZfo_yihg' },
+        params: { key: FIREBASE_API_KEY },
         timeout: 10000
       }
     );
@@ -88,7 +89,7 @@ router.get('/', authMiddleware, async (req, res) => {
 
     const response = await axios.get(url, {
       headers: { 'Content-Type': 'application/json' },
-      params: { key: 'AIzaSyBp4EGFLyzZPAzAM45DopE-1TCZfo_yihg' },
+      params: { key: FIREBASE_API_KEY },
       timeout: 10000
     });
 
@@ -128,7 +129,7 @@ router.get('/:id', authMiddleware, async (req, res) => {
     
     const response = await axios.get(docUrl, {
       headers: { 'Content-Type': 'application/json' },
-      params: { key: 'AIzaSyBp4EGFLyzZPAzAM45DopE-1TCZfo_yihg' },
+      params: { key: FIREBASE_API_KEY },
       timeout: 10000
     });
 
@@ -174,7 +175,7 @@ router.put('/:id', authMiddleware, async (req, res) => {
     const docUrl = `${FIRESTORE_API}/enquiries/${docId}`;
     await axios.patch(docUrl, { fields: firestoreDoc }, {
       headers: { 'Content-Type': 'application/json' },
-      params: { key: 'AIzaSyBp4EGFLyzZPAzAM45DopE-1TCZfo_yihg' },
+      params: { key: FIREBASE_API_KEY },
       timeout: 10000
     });
 
@@ -195,7 +196,7 @@ router.delete('/:id', authMiddleware, async (req, res) => {
     
     await axios.delete(docUrl, {
       headers: { 'Content-Type': 'application/json' },
-      params: { key: 'AIzaSyBp4EGFLyzZPAzAM45DopE-1TCZfo_yihg' },
+      params: { key: FIREBASE_API_KEY },
       timeout: 10000
     });
 
