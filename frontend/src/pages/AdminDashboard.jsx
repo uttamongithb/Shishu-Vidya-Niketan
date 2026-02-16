@@ -711,17 +711,12 @@ const EventModal = ({ event, form, onFormChange, onSubmit, onClose }) => (
           <FormInput label="End Date *" type="datetime-local" value={form.endDate} onChange={(v) => onFormChange({ ...form, endDate: v })} required />
         </div>
         <div className="grid grid-cols-2 gap-4">
-<<<<<<< HEAD
           <FormInput label="Visibility Duration (Days)" type="number" value={form.visibilityDays} onChange={(v) => onFormChange({ ...form, visibilityDays: parseInt(v) })} placeholder="30" min="1" />
           <FormInput label="Priority (0-10)" type="number" value={form.priority} onChange={(v) => onFormChange({ ...form, priority: parseInt(v) })} />
         </div>
         <FormInput label="Image URL" value={form.image} onChange={(v) => onFormChange({ ...form, image: v })} placeholder="https://example.com/image.jpg" />
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
           <p className="text-sm text-blue-800"><strong>Visibility:</strong> Event will be shown for {form.visibilityDays || 30} days from creation date, then automatically hidden.</p>
-=======
-          <FormInput label="Priority (0-10)" type="number" value={form.priority} onChange={(v) => onFormChange({ ...form, priority: parseInt(v) })} />
-          <FormInput label="Image URL" value={form.image} onChange={(v) => onFormChange({ ...form, image: v })} placeholder="https://example.com/image.jpg" />
->>>>>>> 59bb97f51a59500e679b2f47ebfad96caa4602e2
         </div>
         <ModalButtons label={event ? 'Update Event' : 'Create Event'} onClose={onClose} />
       </form>
