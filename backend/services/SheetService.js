@@ -1,6 +1,16 @@
 const { GoogleSpreadsheet } = require('google-spreadsheet');
-const { v4: uuidv4 } = require('uuid');
 require('dotenv').config();
+
+let uuidv4;
+
+// Dynamic import for uuid (ESM module)
+const loadUuid = async () => {
+    if (!uuidv4) {
+        const uuidModule = await import('uuid');
+        uuidv4 = uuidModule.v4;
+    }
+    return uuidv4;
+};
 
 const SHEET_ID = process.env.GOOGLE_SHEET_ID || '1OFLtKrBDqGI2QgU6R9xJkUvEdFlvTQYhrgVUS_WuAZk';
 
@@ -299,6 +309,7 @@ const add = async (sheetTitle, data) => {
     await initSheet();
     const sheet = doc.sheetsByTitle[sheetTitle];
     const headers = SHEET_HEADERS[sheetTitle];
+    const uuid = await loadUuid();
 
     // Double-check: ensure the library knows the headers before we add a row
     if (!sheet.headerValues || sheet.headerValues.length === 0) {
@@ -314,7 +325,7 @@ const add = async (sheetTitle, data) => {
     // Use a clean object to ensure we don't accidentally pass something that overrides our columns
     const newData = {};
     headers.forEach(h => {
-        if (h === '_id') newData[h] = uuidv4();
+        if (h === '_id') newData[h] = uuid();
         else if (h === 'createdAt') newData[h] = now;
         else if (h === 'updatedAt') newData[h] = now;
         else if (h === 'status') newData[h] = data.status || 'pending';
