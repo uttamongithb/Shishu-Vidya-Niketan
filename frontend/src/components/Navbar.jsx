@@ -40,6 +40,8 @@ const Navbar = () => {
     { name: t('navbar.contact'), path: '/contact' }
   ];
 
+  const importantLinksUrl = 'https://docs.google.com/document/d/1UujerikjY7JdagBLkoBfmmHPCjtQ93uf/edit';
+
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${
       scrolled ? 'bg-white shadow-md' : 'bg-white shadow-sm'
@@ -76,6 +78,14 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
+            <a
+              href={importantLinksUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 lg:px-4 py-2 rounded-md text-sm lg:text-base font-semibold transition duration-300 whitespace-nowrap text-gray-700 hover:text-white hover:bg-blue-900"
+            >
+              {t('navbar.importantLinks')}
+            </a>
             <div className="ml-2 lg:ml-4">
               <LanguageSwitcher />
             </div>
@@ -120,6 +130,14 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
+              <a
+                href={importantLinksUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-2 rounded-md text-base font-semibold transition duration-300 block text-gray-700 hover:text-white hover:bg-blue-900"
+              >
+                {t('navbar.importantLinks')}
+              </a>
             </div>
           </div>
         )}
