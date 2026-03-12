@@ -21,12 +21,6 @@ const Hero = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a 
-                href="#contact" 
-                className="bg-blue-900 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-800 transform hover:scale-105 transition text-center shadow-lg"
-              >
-                {t('common.apply')}
-              </a>
-              <a 
                 href="#about" 
                 className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-xl font-bold hover:bg-white hover:text-blue-900 transition text-center"
               >
