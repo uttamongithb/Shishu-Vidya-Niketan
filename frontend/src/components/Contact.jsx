@@ -187,7 +187,7 @@ function Contact() {
                     {/* Map Container */}
                     <div className="w-full h-[400px] md:h-[450px] overflow-hidden shadow-2xl border-4 border-white relative">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.0185786095466!2d77.22495091508096!3d28.631453782418843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd37b741d057%3A0x52a7f9f5d2b7f7c!2sConnaught%20Place%2C%20New%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1673847183451!5m2!1sen!2sin"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3570.3824638826!2d87.93!3d26.40!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eee0a2caad3bf1%3A0x1c51bbf9e3e8700!2sThakurganj%2C%20Kishanganj%2C%20Bihar%20855116!5e0!3m2!1sen!2sin!4v1710256000000!5m2!1sen!2sin"
                             width="100%"
                             height="100%"
                             style={{ border: 0 }}
@@ -201,7 +201,7 @@ function Contact() {
                     {/* Directions Button */}
                     <div className="mt-7 text-center">
                         <a
-                            href="https://maps.google.com"
+                            href="https://www.google.com/maps/search/Thakurganj,+Kishanganj,+Bihar+855116"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2.5 bg-blue-900 text-white px-8 py-4 text-base font-bold rounded-xl shadow-lg hover:bg-blue-800 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
@@ -245,9 +245,9 @@ function Contact() {
                                     </div>
                                     <div>
                                         <h4 className="text-lg font-bold text-blue-900 mb-2">{t('contact.visitOurCampus')}</h4>
-                                        <p className="text-sm font-bold text-gray-700">Sishu Vidhya Niketan School</p>
-                                        <p className="text-sm font-bold text-gray-700">Main Road, Near City Center</p>
-                                        <p className="text-sm font-bold text-gray-700">Your City, State - 123456</p>
+                                         <p className="text-sm font-bold text-gray-700">Shishu Vidya Niketan</p>
+                                         <p className="text-sm font-bold text-gray-700">S.V.M. Road, Thakurganj, P.O. Thakurganj</p>
+                                         <p className="text-sm font-bold text-gray-700">District – Kishanganj, Bihar – 855116</p>
                                     </div>
                                 </div>
 
@@ -260,23 +260,8 @@ function Contact() {
                                     </div>
                                     <div>
                                         <h4 className="text-lg font-bold text-blue-900 mb-2">{t('contact.callUs')}</h4>
-                                        <p className="text-sm font-bold text-gray-700"><span className="text-blue-900">{t('contact.mainOffice')}:</span> +91 98765 43210</p>
-                                        <p className="text-sm font-bold text-gray-700"><span className="text-blue-900">{t('contact.admissions')}:</span> +91 12345 67890</p>
-                                    </div>
-                                </div>
-
-                                {/* Email */}
-                                <div className="flex items-start gap-5 p-5 bg-gray-50 border-l-4 border-blue-900 hover:bg-gray-100 hover:translate-x-2 transition-all duration-300">
-                                    <div className="w-13 h-13 min-w-[52px] flex items-center justify-center bg-white text-blue-900 shadow-md">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-                                            <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
-                                            <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h4 className="text-lg font-bold text-blue-900 mb-2">{t('contact.emailUs')}</h4>
-                                        <p className="text-sm font-bold text-gray-700"><span className="text-blue-900">{t('contact.general')}:</span> info@sishuvidyaniketan.edu</p>
-                                        <p className="text-sm font-bold text-gray-700"><span className="text-blue-900">{t('contact.admissions')}:</span> admissions@svn.edu</p>
+                                         <p className="text-sm font-bold text-gray-700"><span className="text-blue-900">{t('contact.mainOffice')}:</span> 06452-220393</p>
+                                         <p className="text-sm font-bold text-gray-700"><span className="text-blue-900">{t('contact.admissions')}:</span> 06452-220393</p>
                                     </div>
                                 </div>
 
@@ -422,7 +407,7 @@ function Contact() {
                             </p>
                         </div>
                         <a
-                            href="tel:+919876543210"
+                            href="tel:06452220393"
                             className="inline-flex items-center gap-2.5 bg-white text-blue-900 px-8 py-4 text-base font-bold shadow-lg hover:bg-black hover:text-white hover:scale-105 transition-all duration-300 flex-shrink-0"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
