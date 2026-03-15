@@ -80,7 +80,7 @@ const Footer = () => {
         <div className="border-t border-gray-700 mt-8 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <p className="text-sm text-gray-400 text-center md:text-left flex-1">
-              &copy; 2026 {t('navbar.schoolName')}. {t('footer.rights')} <span className="inline-block w-12"></span> Created by <a href="https://lokesh-three-lyart.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">Lokesh</a>, <a href="https://www.uttambhartiya.in" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">Uttam</a>, <span className="text-blue-400">Riya</span>, <span className="text-blue-400">Tanya</span>, <span className="text-blue-400">Prachi</span>
+              &copy; 2026 {t('navbar.schoolName')}. {t('footer.rights')} <span className="inline-block w-12"></span> Created by <a href="https://www.uttambhartiya.in" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">Uttam</a>, <a href="https://lokesh-three-lyart.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">Lokesh</a>, <span className="text-blue-400">Riya</span>, <span className="text-blue-400">Tanya</span>, <span className="text-blue-400">Prachi</span>
             </p>
             
             {/* Admin Login Button */}
