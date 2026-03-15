@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
+import { useSearchParams } from 'react-router-dom';
 import { enquiryAPI } from '../services/api';
 
 // Register GSAP plugins
@@ -9,6 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function Contact() {
     const { t } = useTranslation();
+    const [searchParams] = useSearchParams();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -104,6 +106,22 @@ function Contact() {
 
         return () => ctx.revert();
     }, []);
+
+    useEffect(() => {
+        const subjectParam = searchParams.get('subject') || '';
+        const courseParam = searchParams.get('course') || '';
+        const messageParam = searchParams.get('message') || '';
+
+        if (!subjectParam && !courseParam && !messageParam) {
+            return;
+        }
+
+        setFormData((prev) => ({
+            ...prev,
+            subject: subjectParam || prev.subject || 'admission',
+            message: messageParam || (courseParam ? `I want to enquire about ${courseParam}. Please share admission details.` : prev.message),
+        }));
+    }, [searchParams]);
 
     const handleChange = (e) => {
         setFormData({

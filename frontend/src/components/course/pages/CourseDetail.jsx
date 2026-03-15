@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import CourseTabs from '../components/courses/CourseTabs';
-import EnrollModal from '../components/courses/EnrollModal';
 import CourseCard from '../components/courses/CourseCard';
+import EnquiryModal from '../components/courses/EnquiryModal';
 import { courseAPI } from '../../../services/api';
 import { getDisplayAnnualFee } from '../../../utils/courseFee';
 import './CourseDetail.css';
@@ -12,7 +12,7 @@ const CourseDetail = () => {
     const { courseId } = useParams();
     const { i18n } = useTranslation();
     const isHindi = i18n.language === 'hi';
-    const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
+    const [isEnquiryModalOpen, setIsEnquiryModalOpen] = useState(false);
     const [coursesData, setCoursesData] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -98,6 +98,10 @@ const CourseDetail = () => {
     const duration = getLocalizedValue(course.duration, course.durationHi);
     const mode = getLocalizedValue(course.mode, course.modeHi);
     const fee = getDisplayAnnualFee(course, isHindi);
+
+    const handleEnquire = () => {
+        setIsEnquiryModalOpen(true);
+    };
 
     return (
         <div className="course-detail-page">
@@ -199,16 +203,7 @@ const CourseDetail = () => {
                             </div>
 
                             <div className="sidebar-actions">
-                                <button
-                                    className="btn btn-accent"
-                                    onClick={() => setIsEnrollModalOpen(true)}
-                                >
-                                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    {isHindi ? 'अभी आवेदन करें' : 'Apply Now'}
-                                </button>
-                                <button className="btn btn-secondary">
+                                <button className="btn btn-secondary" onClick={handleEnquire}>
                                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                                     </svg>
@@ -278,16 +273,15 @@ const CourseDetail = () => {
                 </div>
                 <button
                     className="btn btn-accent"
-                    onClick={() => setIsEnrollModalOpen(true)}
+                    onClick={handleEnquire}
                 >
-                    {isHindi ? 'अभी आवेदन करें' : 'Apply Now'}
+                    {isHindi ? 'पूछताछ करें' : 'Enquire'}
                 </button>
             </div>
 
-            {/* Enroll Modal */}
-            <EnrollModal
-                isOpen={isEnrollModalOpen}
-                onClose={() => setIsEnrollModalOpen(false)}
+            <EnquiryModal
+                isOpen={isEnquiryModalOpen}
+                onClose={() => setIsEnquiryModalOpen(false)}
                 course={course}
                 isHindi={isHindi}
             />
