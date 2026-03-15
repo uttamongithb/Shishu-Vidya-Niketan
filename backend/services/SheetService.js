@@ -26,7 +26,7 @@ const SHEET_HEADERS = {
     Courses: [
         '_id', 'id', 'code', 'title', 'titleHi', 'summary', 'summaryHi',
         'ageRange', 'ageRangeHi', 'grade', 'gradeHi', 'duration', 'durationHi',
-        'schedule', 'mode', 'modeHi', 'fee', 'feeHi', 'image',
+        'schedule', 'mode', 'modeHi', 'fee', 'feeHi', 'monthlyFee', 'image',
         'category', 'categoryHi', 'popular', 'stream', 'prerequisites',
         'syllabus', 'teachers', 'faqs', 'subjects', // JSON fields
         'createdAt', 'updatedAt'
@@ -82,6 +82,15 @@ const initSheet = async () => {
 // Columns to hide from the sheet view
 const HIDDEN_COLUMNS = ['_id', 'createdAt', 'updatedAt'];
 
+const getColumnLetter = (index) => {
+    let letter = '';
+    while (index >= 0) {
+        letter = String.fromCharCode((index % 26) + 65) + letter;
+        index = Math.floor(index / 26) - 1;
+    }
+    return letter;
+};
+
 const ensureSheets = async () => {
     for (const [title, headers] of Object.entries(SHEET_HEADERS)) {
         await ensureSheetExistance(title, headers);
@@ -114,8 +123,9 @@ const ensureSheetExistance = async (title, headerValues) => {
             await sheet.resize({ rowCount: 100, columnCount: Math.max(headerValues.length + 5, 20) });
         }
 
-        // Load just the header row to check and fix it
-        await sheet.loadCells('A1:Z1');
+        // Load the full header row span based on configured columns
+        const lastHeaderColumn = getColumnLetter(headerValues.length - 1);
+        await sheet.loadCells(`A1:${lastHeaderColumn}1`);
 
         let needsUpdate = false;
         let hasDataInHeader = false;
@@ -152,7 +162,7 @@ const ensureSheetExistance = async (title, headerValues) => {
                 
                 // If there's data in the header row, we need to move it down first
                 // Load more cells to handle data preservation
-                await sheet.loadCells(`A1:Z10`);
+                await sheet.loadCells(`A1:${lastHeaderColumn}10`);
                 
                 // Find the first empty row to move header data to
                 let targetRow = 1;
