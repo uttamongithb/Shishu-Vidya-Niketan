@@ -11,7 +11,7 @@ const ManagingBody = () => {
   // Fallback managing body members data
   const fallbackMembers = [
     {
-      name: 'Shikekar Chandra Agarwal',
+      name: 'Shekhar Chandra Agarwal',
       position: 'Director',
       image: '/assets/director.jpeg',
       bio: '',

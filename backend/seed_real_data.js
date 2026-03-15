@@ -72,10 +72,10 @@ const galleryData = [
 // Staff Data - School management team (Bilingual: English + Hindi)
 const staffData = [
     {
-        name: 'Rajdeep Dhanuka | राजदीप धनुका',
+        name: 'Shekhar Chandra Agarwal | शेखर चंद्र अग्रवाल',
         position: 'Director | निदेशक',
         image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=face',
-        bio: 'Mr. Rajdeep Dhanuka is a visionary leader with over 20 years of experience in educational administration. | श्री राजदीप धनुका एक दूरदर्शी नेता हैं जिनके पास शैक्षिक प्रशासन में 20 वर्षों से अधिक का अनुभव है।',
+        bio: 'Mr. Shekhar Chandra Agarwal is a visionary leader with over 20 years of experience in educational administration. | श्री शेखर चंद्र अग्रवाल एक दूरदर्शी नेता हैं जिनके पास शैक्षिक प्रशासन में 20 वर्षों से अधिक का अनुभव है।',
         qualifications: 'MBA in Education Management, B.Ed | शिक्षा प्रबंधन में एमबीए, बी.एड',
         experience: '20+ years in Education | 20+ वर्ष शिक्षा क्षेत्र में',
         email: 'director@shishuvidyaniketan.edu',

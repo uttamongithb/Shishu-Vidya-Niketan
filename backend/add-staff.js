@@ -15,7 +15,7 @@ const API_URL = 'http://localhost:5001/api';
 // Staff members data
 const staffMembers = [
     {
-        name: 'Shikekar Chandra Agarwal',
+        name: 'Shekhar Chandra Agarwal',
         position: 'Director',
         image: '/assets/director.jpeg'
     },

@@ -48,10 +48,10 @@ try {
 # Staff members data
 $staffMembers = @(
     @{
-        name = "Shikekar Chandra Agarwal"
+        name = "Shekhar Chandra Agarwal"
         position = "Director"
         image = "https://drive.google.com/uc?export=view&id=11yehAGmXJ1f_vszqUoUcoxqUZieLM2UN"
-        bio = "Dr. Shikekar Chandra Agarwal is the visionary Director of Shishu Vidya Niketan, dedicated to providing quality education and holistic development for all students."
+        bio = "Dr. Shekhar Chandra Agarwal is the visionary Director of Shishu Vidya Niketan, dedicated to providing quality education and holistic development for all students."
         qualifications = "Ph.D in Education, M.Ed, B.Ed"
         experience = "25+ years in Educational Leadership"
         email = "director@shishuvidyaniketan.edu"
