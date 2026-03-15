@@ -224,7 +224,7 @@
 - ✅ Encouraging admissions message
 - ✅ **CTA Buttons:**
   - "Start Your Journey"
-  - "Call Now: +91 98765 43210"
+  - "Call Now: 06452-220393"
 - ✅ Deep blue gradient background
 - ✅ White text
 - ✅ Hover effects
@@ -240,7 +240,7 @@
 - ✅ School tagline/description
 - ✅ **Contact Information:**
   - Address: 123 Education Street
-  - Phone: +91 98765 43210
+  - Phone: 06452-220393
   - Email: info@shishuvidyanikethan.edu
 - ✅ **Quick Links:**
   - About Us

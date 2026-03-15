@@ -24,10 +24,10 @@ const CallToAction = () => {
             {t('callToAction.startJourney')}
           </a>
           <a 
-            href="tel:+919876543210" 
+            href="tel:06452220393" 
             className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-blue-900 transform hover:scale-105 transition duration-300"
           >
-            {t('callToAction.callNow')}: +91 98765 43210
+            {t('callToAction.callNow')}: 06452-220393
           </a>
         </div>
         <div className="mt-8 flex justify-center items-center gap-2 text-white font-bold">

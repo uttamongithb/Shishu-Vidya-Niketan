@@ -79,7 +79,7 @@ const staffData = [
         qualifications: 'MBA in Education Management, B.Ed | शिक्षा प्रबंधन में एमबीए, बी.एड',
         experience: '20+ years in Education | 20+ वर्ष शिक्षा क्षेत्र में',
         email: 'director@shishuvidyaniketan.edu',
-        phone: '+91 98765 43210',
+        phone: '06452-220393',
         achievements: JSON.stringify(['Founder 2005 | संस्थापक 2005', 'Digital Education Initiative | डिजिटल शिक्षा पहल', 'Scholarship Program | छात्रवृत्ति कार्यक्रम'])
     },
     {
@@ -90,7 +90,7 @@ const staffData = [
         qualifications: 'M.A. English Literature, M.Ed, Ph.D Education | अंग्रेजी साहित्य में एम.ए., एम.एड., शिक्षा में पी.एच.डी.',
         experience: '25+ years in Teaching & Administration | 25+ वर्ष शिक्षण और प्रशासन में',
         email: 'principal@shishuvidyaniketan.edu',
-        phone: '+91 98765 43211',
+        phone: '06452-220393',
         achievements: JSON.stringify(['Top 10 District Ranking | जिले में शीर्ष 10 रैंकिंग', 'Activity-based Curriculum | गतिविधि-आधारित पाठ्यक्रम', 'Parent-Teacher Collaboration | अभिभावक-शिक्षक सहयोग'])
     },
     {
@@ -101,7 +101,7 @@ const staffData = [
         qualifications: 'CA, MBA in Finance | सी.ए., वित्त में एमबीए',
         experience: '18+ years in Financial Management | 18+ वर्ष वित्तीय प्रबंधन में',
         email: 'treasurer@shishuvidyaniketan.edu',
-        phone: '+91 98765 43212',
+        phone: '06452-220393',
         achievements: JSON.stringify(['Transparent Accounting System | पारदर्शी लेखा प्रणाली', 'Infrastructure Development | बुनियादी ढांचा विकास', 'Student Welfare Fund | छात्र कल्याण कोष'])
     },
     {
@@ -112,7 +112,7 @@ const staffData = [
         qualifications: 'M.Sc Mathematics, B.Ed | गणित में एम.एससी., बी.एड',
         experience: '15+ years in Education | 15+ वर्ष शिक्षा में',
         email: 'viceprincipal@shishuvidyaniketan.edu',
-        phone: '+91 98765 43213',
+        phone: '06452-220393',
         achievements: JSON.stringify(['Examination System | परीक्षा प्रणाली', 'Remedial Teaching | उपचारात्मक शिक्षण', 'Inter-school Competition | अंतर-विद्यालय प्रतियोगिता'])
     },
     {
@@ -123,7 +123,7 @@ const staffData = [
         qualifications: 'M.Tech, M.Ed, NET Qualified | एम.टेक, एम.एड., नेट योग्य',
         experience: '12+ years in Academic Planning | 12+ वर्ष शैक्षणिक योजना में',
         email: 'academic@shishuvidyaniketan.edu',
-        phone: '+91 98765 43214',
+        phone: '06452-220393',
         achievements: JSON.stringify(['Integrated Curriculum | एकीकृत पाठ्यक्रम', 'STEM Education Program | STEM शिक्षा कार्यक्रम', 'Teacher Training | शिक्षक प्रशिक्षण'])
     }
 ];

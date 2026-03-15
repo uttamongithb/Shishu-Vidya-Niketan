@@ -5,6 +5,7 @@ import CourseTabs from '../components/courses/CourseTabs';
 import EnrollModal from '../components/courses/EnrollModal';
 import CourseCard from '../components/courses/CourseCard';
 import { courseAPI } from '../../../services/api';
+import { getDisplayAnnualFee } from '../../../utils/courseFee';
 import './CourseDetail.css';
 
 const CourseDetail = () => {
@@ -51,11 +52,17 @@ const CourseDetail = () => {
         return () => document.removeEventListener('visibilitychange', handleVisibility);
     }, []);
 
-    const course = coursesData.find(c => c.id === courseId || c._id === courseId);
+    const isCourseMatch = (courseItem) => {
+        const id = courseItem?.id != null ? String(courseItem.id) : '';
+        const dbId = courseItem?._id != null ? String(courseItem._id) : '';
+        return id === courseId || dbId === courseId;
+    };
+
+    const course = coursesData.find(isCourseMatch);
 
     // Get related courses (same category, excluding current)
     const relatedCourses = coursesData
-        .filter(c => course && c.category === course.category && (c.id !== courseId && c._id !== courseId))
+        .filter(c => course && c.category === course.category && !isCourseMatch(c))
         .slice(0, 3);
 
     if (loading) {
@@ -90,7 +97,7 @@ const CourseDetail = () => {
     const ageRange = getLocalizedValue(course.ageRange, course.ageRangeHi);
     const duration = getLocalizedValue(course.duration, course.durationHi);
     const mode = getLocalizedValue(course.mode, course.modeHi);
-    const fee = getLocalizedValue(course.fee, course.feeHi);
+    const fee = getDisplayAnnualFee(course, isHindi);
 
     return (
         <div className="course-detail-page">
@@ -214,11 +221,11 @@ const CourseDetail = () => {
                             <div className="sidebar-contact">
                                 <h4>{isHindi ? 'मदद चाहिए?' : 'Need Help?'}</h4>
                                 <p>{isHindi ? 'किसी भी प्रश्न के लिए हमारी प्रवेश टीम से संपर्क करें।' : 'Contact our admissions team for any queries.'}</p>
-                                <a href="tel:+919876543210" className="contact-link">
+                                <a href="tel:06452220393" className="contact-link">
                                     <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                     </svg>
-                                    +91 98765 43210
+                                    06452-220393
                                 </a>
                                 <a href="mailto:admissions@shishuvidyaniketan.edu" className="contact-link">
                                     <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -256,7 +263,7 @@ const CourseDetail = () => {
                         </div>
                         <div className="related-grid">
                             {relatedCourses.map((relatedCourse, index) => (
-                                <CourseCard key={relatedCourse.id} course={relatedCourse} index={index} />
+                                <CourseCard key={relatedCourse.id || relatedCourse._id} course={relatedCourse} index={index} />
                             ))}
                         </div>
                     </div>

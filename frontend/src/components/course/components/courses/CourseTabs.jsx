@@ -17,6 +17,47 @@ const CourseTabs = ({ course, isHindi }) => {
     const ageRange = getLocalizedValue(course.ageRange, course.ageRangeHi);
     const duration = getLocalizedValue(course.duration, course.durationHi);
     const mode = getLocalizedValue(course.mode, course.modeHi);
+    const modeText = typeof mode === 'string' ? mode : String(mode || '');
+    const modeTextLower = modeText.toLowerCase();
+    const streamText = typeof course.stream === 'string' ? course.stream : '';
+
+    const parseMaybeJson = (value) => {
+        if (typeof value !== 'string') {
+            return value;
+        }
+
+        const trimmed = value.trim();
+        if (!trimmed) {
+            return [];
+        }
+
+        try {
+            return JSON.parse(trimmed);
+        } catch {
+            // Support comma-separated values from sheet/manual entry.
+            return trimmed.includes(',')
+                ? trimmed.split(',').map((item) => item.trim()).filter(Boolean)
+                : [trimmed];
+        }
+    };
+
+    const toArray = (value) => {
+        const parsed = parseMaybeJson(value);
+        if (Array.isArray(parsed)) {
+            return parsed;
+        }
+        if (parsed === null || parsed === undefined || parsed === '') {
+            return [];
+        }
+        return [parsed];
+    };
+
+    const subjects = toArray(course.subjects).map((subject) =>
+        typeof subject === 'string' ? subject : String(subject)
+    );
+    const syllabus = toArray(course.syllabus);
+    const teachers = toArray(course.teachers);
+    const faqs = toArray(course.faqs);
 
     const tabs = isHindi ? [
         { id: 'overview', label: 'अवलोकन', icon: '📋' },
@@ -87,16 +128,16 @@ const CourseTabs = ({ course, isHindi }) => {
                             <p>
                                 {isHindi 
                                     ? `यह व्यापक कार्यक्रम ${grade} ({ageRange}) के छात्रों के लिए डिज़ाइन किया गया है। यह कोर्स ${duration} तक चलता है और ${mode.toLowerCase()} आयोजित किया जाता है।`
-                                    : `This comprehensive program is designed for students in ${grade} (${ageRange}). The course runs for ${duration} and is conducted ${mode.toLowerCase()}.`
+                                    : `This comprehensive program is designed for students in ${grade} (${ageRange}). The course runs for ${duration} and is conducted ${modeTextLower}.`
                                 }
                             </p>
                         </div>
 
-                        {course.subjects && (
+                        {subjects.length > 0 && (
                             <div className="overview-section">
                                 <h3>{isHindi ? 'उपलब्ध विषय' : 'Subjects Offered'}</h3>
                                 <div className="subjects-grid">
-                                    {course.subjects.map((subject, index) => (
+                                    {subjects.map((subject, index) => (
                                         <div key={index} className="subject-chip">
                                             <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -124,9 +165,9 @@ const CourseTabs = ({ course, isHindi }) => {
                                 <li>{isHindi ? 'मुख्य विषयों में मजबूत नींव' : 'Strong foundation in core subjects'}</li>
                                 <li>{isHindi ? 'आलोचनात्मक सोच और समस्या-समाधान कौशल' : 'Critical thinking and problem-solving skills'}</li>
                                 <li>{isHindi ? 'प्रभावी संचार क्षमताएं' : 'Effective communication abilities'}</li>
-                                {course.stream?.includes('Science') && <li>{isHindi ? 'वैज्ञानिक पद्धति और प्रयोगशाला कौशल' : 'Scientific methodology and laboratory skills'}</li>}
-                                {course.stream?.includes('Commerce') && <li>{isHindi ? 'व्यापार कुशाग्रता और वित्तीय साक्षरता' : 'Business acumen and financial literacy'}</li>}
-                                {course.stream?.includes('Arts') && <li>{isHindi ? 'विश्लेषणात्मक सोच और शोध कौशल' : 'Analytical thinking and research skills'}</li>}
+                                {streamText.includes('Science') && <li>{isHindi ? 'वैज्ञानिक पद्धति और प्रयोगशाला कौशल' : 'Scientific methodology and laboratory skills'}</li>}
+                                {streamText.includes('Commerce') && <li>{isHindi ? 'व्यापार कुशाग्रता और वित्तीय साक्षरता' : 'Business acumen and financial literacy'}</li>}
+                                {streamText.includes('Arts') && <li>{isHindi ? 'विश्लेषणात्मक सोच और शोध कौशल' : 'Analytical thinking and research skills'}</li>}
                                 <li>{isHindi ? 'उच्च शिक्षा और करियर के लिए तैयारी' : 'Preparation for higher education and career'}</li>
                             </ul>
                         </div>
@@ -147,7 +188,12 @@ const CourseTabs = ({ course, isHindi }) => {
                         </div>
 
                         <div className="syllabus-timeline">
-                            {course.syllabus?.map((item, index) => (
+                            {syllabus.map((item, index) => {
+                                const topics = toArray(item?.topics).map((topic) =>
+                                    typeof topic === 'string' ? topic : String(topic)
+                                );
+
+                                return (
                                 <div key={index} className="syllabus-item">
                                     <div className="syllabus-week">
                                         <span className="week-number">{isHindi ? `सप्ताह ${item.week}` : `Week ${item.week}`}</span>
@@ -155,13 +201,14 @@ const CourseTabs = ({ course, isHindi }) => {
                                     <div className="syllabus-content">
                                         <h4>{item.title}</h4>
                                         <ul className="topics-list">
-                                            {item.topics.map((topic, i) => (
+                                            {topics.map((topic, i) => (
                                                 <li key={i}>{topic}</li>
                                             ))}
                                         </ul>
                                     </div>
                                 </div>
-                            ))}
+                                );
+                            })}
                         </div>
                     </div>
                 )}
@@ -171,20 +218,26 @@ const CourseTabs = ({ course, isHindi }) => {
                     <div id="panel-teachers" role="tabpanel" className="tab-panel">
                         <h3>{isHindi ? 'अपने शिक्षकों से मिलें' : 'Meet Your Instructors'}</h3>
                         <div className="teachers-grid">
-                            {course.teachers?.map((teacher) => (
-                                <div key={teacher.id} className="teacher-card">
+                            {teachers.map((teacher, teacherIndex) => {
+                                const teacherData = (teacher && typeof teacher === 'object')
+                                    ? teacher
+                                    : { name: String(teacher), role: '', bio: '', image: '' };
+
+                                return (
+                                <div key={teacherData.id || teacherIndex} className="teacher-card">
                                     <img
-                                        src={teacher.image}
-                                        alt={teacher.name}
+                                        src={teacherData.image}
+                                        alt={teacherData.name}
                                         className="teacher-image"
                                     />
                                     <div className="teacher-info">
-                                        <h4>{teacher.name}</h4>
-                                        <span className="teacher-role">{teacher.role}</span>
-                                        <p className="teacher-bio">{teacher.bio}</p>
+                                        <h4>{teacherData.name}</h4>
+                                        <span className="teacher-role">{teacherData.role}</span>
+                                        <p className="teacher-bio">{teacherData.bio}</p>
                                     </div>
                                 </div>
-                            ))}
+                                );
+                            })}
                         </div>
                     </div>
                 )}
@@ -219,7 +272,7 @@ const CourseTabs = ({ course, isHindi }) => {
                                 </svg>
                                 <div>
                                     <span className="schedule-label">{isHindi ? 'मोड' : 'Mode'}</span>
-                                    <span className="schedule-value">{mode}</span>
+                                    <span className="schedule-value">{modeText}</span>
                                 </div>
                             </div>
                         </div>
@@ -230,21 +283,27 @@ const CourseTabs = ({ course, isHindi }) => {
                 {activeTab === 4 && (
                     <div id="panel-faq" role="tabpanel" className="tab-panel">
                         <h3>{isHindi ? 'अक्सर पूछे जाने वाले प्रश्न' : 'Frequently Asked Questions'}</h3>
-                        {course.faqs?.length > 0 ? (
+                        {faqs.length > 0 ? (
                             <div className="faq-list">
-                                {course.faqs.map((faq, index) => (
+                                {faqs.map((faq, index) => {
+                                    const faqData = (faq && typeof faq === 'object')
+                                        ? faq
+                                        : { question: String(faq), answer: '' };
+
+                                    return (
                                     <details key={index} className="faq-item">
                                         <summary className="faq-question">
-                                            <span>{faq.question}</span>
+                                            <span>{faqData.question}</span>
                                             <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                                             </svg>
                                         </summary>
                                         <div className="faq-answer">
-                                            <p>{faq.answer}</p>
+                                            <p>{faqData.answer}</p>
                                         </div>
                                     </details>
-                                ))}
+                                    );
+                                })}
                             </div>
                         ) : (
                             <div className="empty-state">

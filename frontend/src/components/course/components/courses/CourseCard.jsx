@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { forwardRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { getDisplayAnnualFee } from '../../../../utils/courseFee';
 import './CourseCard.css';
 
 const CourseCard = forwardRef(({ course, index }, ref) => {
@@ -15,7 +16,9 @@ const CourseCard = forwardRef(({ course, index }, ref) => {
     const ageRange = isHindi && course.ageRangeHi ? course.ageRangeHi : course.ageRange;
     const duration = isHindi && course.durationHi ? course.durationHi : course.duration;
     const mode = isHindi && course.modeHi ? course.modeHi : course.mode;
-    const fee = isHindi && course.feeHi ? course.feeHi : course.fee;
+    const fee = getDisplayAnnualFee(course, isHindi);
+    const courseIdentifier = course.id || course._id;
+    const detailsPath = courseIdentifier ? `/courses/${courseIdentifier}` : '/courses';
     
     // Get grade icon based on category
     const getGradeIcon = () => {
@@ -86,7 +89,7 @@ const CourseCard = forwardRef(({ course, index }, ref) => {
 
                 {/* Title */}
                 <h3 className="card-title">
-                    <Link to={`/courses/${course.id}`}>{title}</Link>
+                    <Link to={detailsPath}>{title}</Link>
                 </h3>
 
                 {/* Summary */}
@@ -123,7 +126,7 @@ const CourseCard = forwardRef(({ course, index }, ref) => {
                         <span className="fee-label">{t('coursesPage.annualFee')}</span>
                         <span className="fee-value">{fee}</span>
                     </div>
-                    <Link to={`/courses/${course.id}`} className="view-btn">
+                    <Link to={detailsPath} className="view-btn">
                         <span>{t('coursesPage.viewDetails')}</span>
                         <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />

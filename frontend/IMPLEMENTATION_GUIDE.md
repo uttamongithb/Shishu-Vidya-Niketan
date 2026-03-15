@@ -121,7 +121,7 @@
 - Heading: "Ready to Join Our Learning Community?"
 - **CTA Buttons:**
   - "Start Your Journey"
-  - "Call Now: +91 98765 43210"
+  - "Call Now: 06452-220393"
 - Admissions open message
 
 ### 14. **Footer.jsx** 🧩

@@ -797,7 +797,7 @@ const StaffModal = ({ member, form, onFormChange, onSubmit, onClose }) => (
         </div>
         <div className="grid grid-cols-2 gap-4">
           <FormInput label="Email" value={form.email} onChange={(v) => onFormChange({ ...form, email: v })} placeholder="email@example.com" />
-          <FormInput label="Phone" value={form.phone} onChange={(v) => onFormChange({ ...form, phone: v })} placeholder="+91 98765 43210" />
+          <FormInput label="Phone" value={form.phone} onChange={(v) => onFormChange({ ...form, phone: v })} placeholder="06452-220393" />
         </div>
         <FormTextarea label="Achievements (one per line)" value={form.achievements} onChange={(v) => onFormChange({ ...form, achievements: v })} placeholder="Founded the school in 2005&#10;Implemented digital learning" rows={4} />
         <ModalButtons label={member ? 'Update Staff' : 'Add Staff'} onClose={onClose} />

@@ -55,7 +55,7 @@ $staffMembers = @(
         qualifications = "Ph.D in Education, M.Ed, B.Ed"
         experience = "25+ years in Educational Leadership"
         email = "director@shishuvidyaniketan.edu"
-        phone = "+91 98765 43210"
+        phone = "06452-220393"
         achievements = @(
             "Established Shishu Vidya Niketan with a vision for excellence",
             "Implemented modern teaching methodologies",
@@ -70,7 +70,7 @@ $staffMembers = @(
         qualifications = "M.A., M.Ed, Ph.D (Pursuing)"
         experience = "20+ years in Teaching and Administration"
         email = "principal@shishuvidyaniketan.edu"
-        phone = "+91 98765 43211"
+        phone = "06452-220393"
         achievements = @(
             "Enhanced academic performance across all grades",
             "Introduced innovative teaching practices",
@@ -85,7 +85,7 @@ $staffMembers = @(
         qualifications = "M.Sc, B.Ed"
         experience = "15+ years in Education"
         email = "viceprincipal@shishuvidyaniketan.edu"
-        phone = "+91 98765 43213"
+        phone = "06452-220393"
         achievements = @(
             "Streamlined administrative processes",
             "Implemented effective student discipline systems",
